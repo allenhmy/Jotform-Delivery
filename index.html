@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jotform iFrame Demo</title>
+
+  <style>
+    /* ---- Reset so we look like Jotform ---- */
+    :root{
+      --radius: 12px;
+      --gap: 12px;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      /* optional accent; tweak to your brand */
+      --accent: #e53935;
+    }
+    html, body { height: 100%; }
+    html, body, div, span, p, input, button { box-sizing: border-box; }
+    body{
+      margin:0;                     /* remove default margins that cause scrollbars */
+      font-family: inherit;         /* inherit Jotform font */
+      color: inherit;               /* inherit text color */
+      background: transparent;      /* blend with Jotform background */
+      line-height: 1.35;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow: hidden;             /* kill stray scrollbars inside iframe */
+    }
+
+    /* ---- Layout ---- */
+    .wrap{
+      width: 100%;
+      padding: 0;                   /* no side padding to avoid horizontal scroll */
+      display: flex;
+      justify-content: center;
+    }
+    .card{
+      width: min(640px, 100%);      /* responsive */
+      padding: calc(var(--gap) * 1.5);
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.06);
+    }
+
+    /* ---- Typography ---- */
+    h3{
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    .sub{
+      margin: 0 0 var(--gap) 0;
+      opacity: .8;
+      font-size: .95rem;
+    }
+
+    /* ---- Controls ---- */
+    .row{ display: grid; gap: var(--gap); }
+    input[type="text"]{
+      width: 100%;
+      border: 1px solid rgba(0,0,0,.2);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font: inherit;
+      outline: none;
+    }
+    input[type="text"]:focus{
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+    }
+    .pill{
+      display: inline-block;
+      padding: 6px 10px;
+      background: color-mix(in srgb, var(--accent) 12%, white);
+      color: #222;
+      border-radius: 999px;
+      font-size: .85rem;
+      margin-top: 6px;
+    }
+
+    @media (prefers-color-scheme: dark){
+      .card{ background: #1f1f1f; color: #eee; border-color: #333; }
+      input[type="text"]{ background:#141414; color:#eee; border-color:#333; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h3>Hello Jotform 👋</h3>
+      <p class="sub">Type below—this demo inherits your Jotform font/colors and avoids scrollbars.</p>
+
+      <div class="row">
+        <input id="demoInput" type="text" placeholder="Start typing…" />
+        <div class="pill">You typed: <span id="output"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('demoInput');
+    const out   = document.getElementById('output');
+    input.addEventListener('input', () => { out.textContent = input.value.trim(); });
+  </script>
+</body>
+</html>
