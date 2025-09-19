@@ -6,36 +6,42 @@
   <title>Jotform iFrame Demo</title>
 
   <style>
-    /* ---- Reset so we look like Jotform ---- */
     :root{
       --radius: 12px;
       --gap: 12px;
       --shadow: 0 8px 24px rgba(0,0,0,.08);
-      /* optional accent; tweak to your brand */
       --accent: #e53935;
     }
-    html, body { height: 100%; }
+
+    /* Full-height & centered layout */
+    html, body { height: 100%; margin: 0; }
     html, body, div, span, p, input, button { box-sizing: border-box; }
     body{
-      margin:0;                     /* remove default margins that cause scrollbars */
-      font-family: inherit;         /* inherit Jotform font */
-      color: inherit;               /* inherit text color */
-      background: transparent;      /* blend with Jotform background */
+      font-family: inherit;
+      color: inherit;
+      background: transparent;
       line-height: 1.35;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      overflow: hidden;             /* kill stray scrollbars inside iframe */
+
+      /* Center the content */
+      display: flex;
+      align-items: center;      /* vertical center */
+      justify-content: center;  /* horizontal center */
+
+      overflow: hidden;         /* avoid inner scrollbars in the iframe */
     }
 
-    /* ---- Layout ---- */
     .wrap{
       width: 100%;
-      padding: 0;                   /* no side padding to avoid horizontal scroll */
+      padding: 0;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
+
     .card{
-      width: min(640px, 100%);      /* responsive */
+      width: min(640px, 100%);
       padding: calc(var(--gap) * 1.5);
       background: #fff;
       border-radius: var(--radius);
@@ -43,19 +49,9 @@
       border: 1px solid rgba(0,0,0,.06);
     }
 
-    /* ---- Typography ---- */
-    h3{
-      margin: 0 0 8px 0;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-    .sub{
-      margin: 0 0 var(--gap) 0;
-      opacity: .8;
-      font-size: .95rem;
-    }
+    h3{ margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
+    .sub{ margin: 0 0 var(--gap); opacity: .8; font-size: .95rem; }
 
-    /* ---- Controls ---- */
     .row{ display: grid; gap: var(--gap); }
     input[type="text"]{
       width: 100%;
