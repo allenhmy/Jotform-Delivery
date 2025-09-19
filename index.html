@@ -5,81 +5,44 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Jotform iFrame Demo</title>
 
-  <style>
-    :root{
-      --radius: 12px;
-      --gap: 12px;
-      --shadow: 0 8px 24px rgba(0,0,0,.08);
-      --accent: #e53935;
-    }
+<style>
+  :root{ --radius:12px; --gap:12px; --shadow:0 8px 24px rgba(0,0,0,.08); --accent:#e53935; }
 
-    /* Full-height & centered layout */
-    html, body { height: 100%; margin: 0; }
-    html, body, div, span, p, input, button { box-sizing: border-box; }
-    body{
-      font-family: inherit;
-      color: inherit;
-      background: transparent;
-      line-height: 1.35;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+  /* Make the iframe content use the full viewport height and center */
+  html, body { height: 100%; margin: 0; }
+  body{
+    min-height: 100vh;                 /* ensures full height even if iframe is taller */
+    display: flex;
+    align-items: center;                /* vertical center */
+    justify-content: center;            /* horizontal center */
+    background: transparent;
+    line-height: 1.35;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    font-family: inherit; color: inherit;
+  }
 
-      /* Center the content */
-      display: flex;
-      align-items: center;      /* vertical center */
-      justify-content: center;  /* horizontal center */
+  .wrap{
+    width: 100%;
+    min-height: 100vh;                  /* also fill height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
 
-      overflow: hidden;         /* avoid inner scrollbars in the iframe */
-    }
+  .card{
+    width: min(640px, 100%);
+    padding: calc(var(--gap) * 1.5);
+    background: #fff;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,.06);
+  }
 
-    .wrap{
-      width: 100%;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card{
-      width: min(640px, 100%);
-      padding: calc(var(--gap) * 1.5);
-      background: #fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(0,0,0,.06);
-    }
-
-    h3{ margin: 0 0 8px; font-size: 1.1rem; font-weight: 600; }
-    .sub{ margin: 0 0 var(--gap); opacity: .8; font-size: .95rem; }
-
-    .row{ display: grid; gap: var(--gap); }
-    input[type="text"]{
-      width: 100%;
-      border: 1px solid rgba(0,0,0,.2);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font: inherit;
-      outline: none;
-    }
-    input[type="text"]:focus{
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
-    }
-    .pill{
-      display: inline-block;
-      padding: 6px 10px;
-      background: color-mix(in srgb, var(--accent) 12%, white);
-      color: #222;
-      border-radius: 999px;
-      font-size: .85rem;
-      margin-top: 6px;
-    }
-
-    @media (prefers-color-scheme: dark){
-      .card{ background: #1f1f1f; color: #eee; border-color: #333; }
-      input[type="text"]{ background:#141414; color:#eee; border-color:#333; }
-    }
-  </style>
+  /* ...keep the rest of your styles the same... */
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -101,3 +64,4 @@
   </script>
 </body>
 </html>
+
